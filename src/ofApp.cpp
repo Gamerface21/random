@@ -5,19 +5,20 @@ void ofApp::setup(){
 jewel.load("diamond.png");// image to use (must be stored in "random/bin/data" folder)
 std::random_device rd;// set of x-coordinates for jewel
 
-int min= 0;
-int max=1200;
+float mean= 1000;
+float sd=200;
 
-int smallest=0;
-int largest=970;
+float smallest=400;
+float largest=200;
 
-std::uniform_int_distribution<> unifrm(min, max);
-std::uniform_int_distribution<> unifrm2(smallest,largest);
+std::normal_distribution<float> norm(mean, sd);
+std::normal_distribution<float>norm2 (smallest,largest);
+  
 
 for (int n=0; n<20; n++)
 {
-	X.push_back(unifrm(rd));
-	Y.push_back(unifrm2(rd));
+	X.push_back(norm(rd));
+	Y.push_back(norm2(rd));
 }
  }//set of y-coordinates for jewel}
 
